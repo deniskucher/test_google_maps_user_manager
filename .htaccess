@@ -1,0 +1,45 @@
+#Order deny,allow
+#Deny from all
+#Allow from 185.123.165.18
+
+#php_flag display_errors on
+#php_flag display_startup_errors on
+#php_value error_reporting "E_ALL & ~E_NOTICE"
+php_value error_reporting "E_ALL | E_STRICT"
+php_flag magic_quotes_gpc Off
+
+DefaultLanguage en
+AddDefaultCharset UTF-8
+php_value default_charset "UTF-8"
+
+
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/zzzakaz2 [OR]
+RewriteCond %{REQUEST_URI} ^/operatorrr [OR]
+RewriteCond %{REQUEST_URI} ^/async
+RewriteRule ^(.*)$ index_v2.php [L,QSA]
+
+RewriteCond %{REQUEST_URI} ^/dashboard.htm
+RewriteRule ^(.*)$ /application/basic.dashboard [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/application
+RewriteRule ^(.*)$ index_v2.php [L,QSA]
+
+RewriteCond %{REQUEST_URI} !^/index.php
+RewriteCond %{REQUEST_URI} !^/index_v2.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule \.php$ trap.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]

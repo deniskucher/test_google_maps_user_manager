@@ -1,0 +1,25 @@
+#map {
+  height: 400px;
+  width: 600px;
+}
+#message { position:absolute; padding:5px; background:#555; color:#fff; min-width:120px; overflow-wrap: break-word;border-radius: 10px 10px 10px 0px;}
+#message p{
+  margin: 0;
+  padding: 0;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#google-map-app{
+  margin: 50px;
+}
+#update-users{
+  margin: 20px;
+  margin-left: 0px;
+}
+a{
+  margin: 0 10px;
+}
